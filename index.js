@@ -18,8 +18,9 @@ function sortable(rootElement) {
     dragElement = evt.target;
     evt.dataTransfer.effectAllowed = 'move';
     evt.dataTransfer.setData('Text', dragElement.textContent);
-    rootElement.addEventListener('dragover', onDragOver);
-    rootElement.addEventListener('dragend', onDragEnd);
+    rootElement.addEventListener('dragover', onDragOver, false);
+    rootElement.addEventListener('dragend', onDragEnd, false);
+    rootElement.addEventListener('drop', onDrop, false);
     dragElement.classList.add('drag');
     setTimeout(function() {
       dragElement.style.visibility = 'hidden';
@@ -42,11 +43,18 @@ function sortable(rootElement) {
   }
 
   function onDragEnd(evt) {
-    evt.preventDefault();
+    if(evt.preventDefault) { evt.preventDefault(); }
+    if(evt.stopPropagation) { evt.stopPropagation(); }
     dragElement.classList.remove('drag');
     dragElement.style.visibility = 'visible';
     rootElement.removeEventListener('dragover', onDragOver, false);
     rootElement.removeEventListener('dragend', onDragEnd, false);
+    rootElement.removeEventListener('drop', onDrop, false);
+  }
+
+  function onDrop(evt) {
+    if(evt.preventDefault) { evt.preventDefault(); }
+    if(evt.stopPropagation) { evt.stopPropagation(); }
   }
 }
 
