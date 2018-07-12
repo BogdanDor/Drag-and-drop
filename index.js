@@ -23,7 +23,6 @@ function sortable(rootElement) {
     rootElement.addEventListener('drop', onDrop, false);
     dragElement.classList.add('drag');
     setTimeout(function() {
-      dragElement.style.visibility = 'hidden';
     }, 0);
   }
 
@@ -46,7 +45,6 @@ function sortable(rootElement) {
     if(evt.preventDefault) { evt.preventDefault(); }
     if(evt.stopPropagation) { evt.stopPropagation(); }
     dragElement.classList.remove('drag');
-    dragElement.style.visibility = 'visible';
     rootElement.removeEventListener('dragover', onDragOver, false);
     rootElement.removeEventListener('dragend', onDragEnd, false);
     rootElement.removeEventListener('drop', onDrop, false);

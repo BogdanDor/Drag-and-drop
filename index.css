@@ -1,8 +1,17 @@
+.header {
+  margin: 8px;
+  margin-bottom: 16px;
+  line-height: 40px;
+  font-size: 36px;
+  text-align: center;
+}
 .list {
   box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
   width: 320px;
   line-height: 24px;
-  font-size: 18px;  
+  font-size: 18px;
 }
 .card {
   box-sizing: border-box;
@@ -11,7 +20,10 @@
   border-style: solid;
   border-width: 1px;
   border-color: black;
+  border-radius: 10px;
 }
 .drag {
   background-color: aquamarine;
+  opacity: 1;
+  cursor: move;
 }
